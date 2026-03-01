@@ -52,24 +52,18 @@ Outputs:
 
 ## Core Architecture
 
-- `Core_Calculator` routes `Start` by selected operation:
-- `Top_AddSub` for add/sub (combinational datapath with controller pulse behavior)
-- `Multiplier_4bit` for multiply (iterative FSM)
-- `Divider_4bit` for divide (iterative FSM)
-- `Euclid_Div_Adjust` post-processes quotient/remainder sign logic
-- `Display_Encoder` formats values into an intermediate packed display bus (`x_inter`)
-- `myseven_segments` multiplexes and drives the physical display outputs
+- `Core_Calculator` routes `Start` by `Sel` to add/sub, multiply, or divide.
+- Arithmetic path: `Top_AddSub`, `Multiplier_4bit` (iterative FSM), `Divider_4bit` (iterative FSM).
+- Division correction: `Euclid_Div_Adjust` fixes quotient/remainder sign behavior.
+- Display path: `Display_Encoder` packs `x_inter`, then `myseven_segments` drives `a_to_g` and `an`.
 
 ## Project Structure
 
 - `core_calculator.xpr` - Vivado project file
-- `core_calculator.srcs/sources_1/imports/FFFinal_Calculator/Final_Top.vhd` - top-level wrapper
-- `core_calculator.srcs/sources_1/imports/FFFinal_Calculator/final_calculator.vhd` - arithmetic core integration
-- `core_calculator.srcs/sources_1/imports/FFFinal_Calculator/Display_Encoder.vhd` - result/display encoding
-- `core_calculator.srcs/sources_1/imports/FFFinal_Calculator/myseven_segments.vhd` - seven-segment scan driver
-- `core_calculator.srcs/sources_1/imports/FFFinal_Calculator/Multiplier_4bit.vhd` - multiplier FSM
-- `core_calculator.srcs/sources_1/imports/FFFinal_Calculator/Divider_4bit.vhd` - divider FSM
-- `core_calculator.srcs/sources_1/imports/FFFinal_Calculator/euclidian.vhd` - Euclidean adjust stage
+- `core_calculator.srcs/sources_1/imports/FFFinal_Calculator/` - top/core arithmetic and display RTL modules
+- `.../Final_Top.vhd` - top-level wrapper
+- `.../final_calculator.vhd` - arithmetic core integration
+- `.../Display_Encoder.vhd`, `.../myseven_segments.vhd` - display formatting and driver
 - `core_calculator.srcs/sim_1/imports/FFFinal_Calculator/Tb_Final_Top.vhd` - simulation testbench
 - `core_calculator.srcs/constrs_1/imports/FFFinal_Calculator/main_display_xdc.xdc` - pin constraints
 
