@@ -63,7 +63,7 @@ begin
         port map (
             A       => Q_neg,
             B       => "0001",
-            Op_Sel  => '1', -- Subtract 1
+            Op_Sel  => '1',
             Result  => Q_negm1_res,
             Co      => open
         );
@@ -73,7 +73,7 @@ begin
         port map (
             A       => Q_mag,
             B       => "0001",
-            Op_Sel  => '0', -- Add 1
+            Op_Sel  => '0',
             Result  => Q_plus1_res,
             Co      => open
         );
@@ -100,7 +100,7 @@ begin
             end if;
             
         else 
-            R_e <= R_corr; -- R = |B| - r
+            R_e <= R_corr;
             
             if sign_diff = '0' then
                 Q_e_internal <= Q_plus1; 

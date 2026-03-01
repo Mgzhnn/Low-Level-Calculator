@@ -29,14 +29,14 @@ architecture Behavioral of Multiplier_4bit is
     type State_Type is (S_HALT, S_INIT, S_CHECK, S_ADD, S_SHIFT, S_DONE);
     signal current_state, next_state : State_Type;
 
-    -- 3. 내부 레지스터
+
     signal Reg_A     : STD_LOGIC_VECTOR (3 downto 0); 
     signal Reg_P     : STD_LOGIC_VECTOR (3 downto 0); 
     signal Reg_Q     : STD_LOGIC_VECTOR (3 downto 0); 
     signal Count     : integer range 0 to 4;          
     signal Carry_Bit : STD_LOGIC;                     
 
-    -- Adder 연결 신호
+
     signal Adder_Out : STD_LOGIC_VECTOR (4 downto 0);
     signal Raw_Carry : STD_LOGIC;
 

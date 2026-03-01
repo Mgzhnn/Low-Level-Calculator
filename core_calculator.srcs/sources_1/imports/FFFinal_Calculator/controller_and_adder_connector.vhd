@@ -22,19 +22,19 @@ architecture Behavioral of Top_AddSub is
 
 begin
 
-    -- Controller instance
+
     U_CTRL : entity work.AddSub_Controller
         port map (
             CLK     => CLK,
             RESET   => RESET,
             Start   => Start,
             Sel     => Sel,
-            Op_Sel  => Op_Sel_sig,   -- connect to adder/sub
+            Op_Sel  => Op_Sel_sig,
             Done    => Done,
             OP_Code => OP_Code
         );
 
-    -- Adder/Subtractor instance
+
     U_ADD_SUB : entity work.Signed_Adder_Sub
         port map (
             A      => A,

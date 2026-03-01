@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Product Version: Vivado v2025.1 (64-bit)                              -->
-<!--                                                                         -->
-<!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
-<!-- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.   -->
-
 <Project Product="Vivado" Version="7" Minor="70" Path="C:/Users/ljw05/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-2684-LAPTOP-MPG3T455/PrjAr/_X_/core_calculator.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>

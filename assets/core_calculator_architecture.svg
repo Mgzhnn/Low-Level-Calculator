@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Core Calculator Architecture</title>
+  <desc id="desc">Top-level architecture for the VHDL core calculator showing control, arithmetic datapath, encoding, and seven-segment output.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f3f7ff"/>
+      <stop offset="100%" stop-color="#eefcf6"/>
+    </linearGradient>
+    <linearGradient id="coreGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="encGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#0d9488"/>
+    </linearGradient>
+    <linearGradient id="dispGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#374151"/>
+    </marker>
+    <style>
+      .card { rx: 20; ry: 20; stroke: #1f2937; stroke-width: 2; }
+      .label { font-family: 'Segoe UI', Tahoma, sans-serif; fill: #111827; font-size: 24px; font-weight: 700; }
+      .sub { font-family: 'Segoe UI', Tahoma, sans-serif; fill: #111827; font-size: 19px; }
+      .mono { font-family: 'Courier New', monospace; fill: #1f2937; font-size: 18px; }
+      .light { fill: #f9fafb; }
+      .white { fill: #ffffff; }
+      .wire { stroke: #374151; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .wireSoft { stroke: #6b7280; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .title { font-family: 'Segoe UI', Tahoma, sans-serif; fill: #0f172a; font-size: 36px; font-weight: 800; }
+      .legend { font-family: 'Segoe UI', Tahoma, sans-serif; fill: #111827; font-size: 17px; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1400" height="900" fill="url(#bg)"/>
+  <text class="title" x="60" y="64">Low-Level Calculator (VHDL) Architecture</text>
+
+  <rect class="card white" x="60" y="110" width="280" height="260"/>
+  <text class="label" x="85" y="155">Inputs</text>
+  <text class="mono" x="85" y="195">Clk, Reset, Start</text>
+  <text class="mono" x="85" y="228">Sel[1:0]</text>
+  <text class="mono" x="85" y="261">A[3:0], B[3:0]</text>
+  <text class="sub" x="85" y="320">4-bit signed operands</text>
+
+  <rect class="card" x="390" y="110" width="560" height="540" fill="url(#coreGrad)"/>
+  <text x="425" y="165" style="font-family:'Segoe UI',Tahoma,sans-serif; fill:#ffffff; font-size:30px; font-weight:800;">Final_Top_Calculator</text>
+
+  <rect class="card light" x="430" y="200" width="480" height="190"/>
+  <text class="label" x="455" y="245">Core_Calculator</text>
+  <text class="sub" x="455" y="280">Top_AddSub (Sel=00/01)</text>
+  <text class="sub" x="455" y="310">Multiplier_4bit (Sel=10)</text>
+  <text class="sub" x="455" y="340">Divider_4bit + Euclid_Div_Adjust (Sel=11)</text>
+  <text class="sub" x="455" y="370">Done asserted for mul/div completion</text>
+
+  <rect class="card" x="430" y="420" width="480" height="90" fill="url(#encGrad)"/>
+  <text x="455" y="474" style="font-family:'Segoe UI',Tahoma,sans-serif; fill:#ffffff; font-size:27px; font-weight:800;">Display_Encoder</text>
+
+  <rect class="card" x="430" y="530" width="480" height="90" fill="url(#dispGrad)"/>
+  <text x="455" y="584" style="font-family:'Segoe UI',Tahoma,sans-serif; fill:#ffffff; font-size:27px; font-weight:800;">myseven_segments</text>
+
+  <rect class="card white" x="1000" y="190" width="340" height="220"/>
+  <text class="label" x="1025" y="235">Outputs</text>
+  <text class="mono" x="1025" y="275">Done</text>
+  <text class="mono" x="1025" y="308">a_to_g[7:0]</text>
+  <text class="mono" x="1025" y="341">an[7:0]</text>
+  <text class="sub" x="1025" y="380">8-digit multiplexed display</text>
+
+  <path class="wire" d="M340 230 L390 230"/>
+  <path class="wire" d="M950 270 L1000 270"/>
+  <path class="wire" d="M950 320 L1000 320"/>
+  <path class="wire" d="M950 360 L1000 360"/>
+
+  <path class="wireSoft" d="M670 390 L670 420"/>
+  <path class="wireSoft" d="M670 510 L670 530"/>
+
+  <rect class="card white" x="60" y="420" width="280" height="190"/>
+  <text class="label" x="85" y="466">Sel Mapping</text>
+  <text class="legend" x="85" y="502">00: Addition</text>
+  <text class="legend" x="85" y="532">01: Subtraction</text>
+  <text class="legend" x="85" y="562">10: Multiplication</text>
+  <text class="legend" x="85" y="592">11: Division</text>
+
+  <rect class="card white" x="1000" y="460" width="340" height="210"/>
+  <text class="label" x="1025" y="505">Sign Path</text>
+  <text class="legend" x="1025" y="540">Abs_4bit / negative_complement</text>
+  <text class="legend" x="1025" y="570">normalize magnitudes</text>
+  <text class="legend" x="1025" y="600">Euclid_Div_Adjust fixes</text>
+  <text class="legend" x="1025" y="630">quotient/remainder sign rules</text>
+</svg>

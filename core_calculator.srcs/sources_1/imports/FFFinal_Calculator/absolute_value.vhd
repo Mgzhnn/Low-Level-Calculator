@@ -3,9 +3,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Abs_4bit is
     Port (
-        X      : in  STD_LOGIC_VECTOR(3 downto 0);   -- signed 2's comp
-        MAG_X  : out STD_LOGIC_VECTOR(3 downto 0);   -- |X|
-        SIGN_X : out STD_LOGIC                      -- sign of X (MSB)
+        X      : in  STD_LOGIC_VECTOR(3 downto 0);
+        MAG_X  : out STD_LOGIC_VECTOR(3 downto 0);
+        SIGN_X : out STD_LOGIC
     );
 end Abs_4bit;
 
@@ -27,17 +27,17 @@ begin
 
     SIGN_X <= X(3);
 
-    -- Compute 0 - X using your subtractor
+
     U_SUB_ABS : Signed_Adder_Sub
         port map (
-            A       => "0000",  -- 0
+            A       => "0000",
             B       => X,
-            Op_Sel  => '1',     -- 0 - X
+            Op_Sel  => '1',
             Result  => sub_res,
             Co      => open
         );
 
-    -- If X < 0 then |X| = 0 - X; else |X| = X
+
     MAG_X <= sub_res(3 downto 0) when X(3) = '1' else X;
 
 end Structural;

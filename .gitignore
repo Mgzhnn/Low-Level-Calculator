@@ -1,14 +1,11 @@
-# macOS
 .DS_Store
 
-# Common logs/temp
 *.log
 *.jou
 *.str
 *.tmp
 *.cache
 
-# Vivado generated artifacts
 .Xil/
 *.cache/
 *.hw/
@@ -17,7 +14,6 @@
 *.sim/
 *.gen/
 
-# Vivado backups/checkpoints
 *.backup.jou
 *.backup.log
 *.Xil
