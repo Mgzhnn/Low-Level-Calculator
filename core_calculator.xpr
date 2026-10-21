@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Project Product="Vivado" Version="7" Minor="70" Path="C:/Users/ljw05/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-2684-LAPTOP-MPG3T455/PrjAr/_X_/core_calculator.xpr">
+<Project Product="Vivado" Version="7" Minor="70" Path="./core_calculator.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="b0dd45a469fb465ca1067da8373c7c98"/>
     <Option Name="Part" Val="xc7a75tfgg484-1"/>
-    <Option Name="CompiledLibDir" Val="C:/Users/ljw05/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-2684-LAPTOP-MPG3T455/PrjAr/_X_/core_calculator.cache/compile_simlib"/>
+    <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
     <Option Name="CompiledLibDirModelSim" Val="$PCACHEDIR/compile_simlib/modelsim"/>
     <Option Name="CompiledLibDirQuesta" Val="$PCACHEDIR/compile_simlib/questa"/>
@@ -126,9 +126,9 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/state_machne.vhd">
+      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/state_machine.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/state_machne.vhd"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/state_machine.vhd"/>
           <Attr Name="ImportTime" Val="1763639930"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -170,14 +170,6 @@
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/myseven_segments.vhd"/>
           <Attr Name="ImportTime" Val="1763642214"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/negative_complement.vhd">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/negative_complement.vhd"/>
-          <Attr Name="ImportTime" Val="1764491128"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>

@@ -12,8 +12,8 @@ trap 'rm -rf "$WORK"' EXIT
 FLAGS=(--std=08 -fsynopsys --workdir="$WORK")
 
 # Analysis order: each file after the entities it instantiates directly
-for f in addition signed_addsubtractor state_machne controller_and_adder_connector \
-         absolute_value negative_complement Multiplier_4bit Divider_4bit euclidian final_calculator \
+for f in addition signed_addsubtractor state_machine controller_and_adder_connector \
+         absolute_value Multiplier_4bit Divider_4bit euclidian final_calculator \
          Display_Encoder myseven_segments Final_Top; do
     "$GHDL" -a "${FLAGS[@]}" "$SRC/$f.vhd" || { echo "FAIL: cannot analyse $f.vhd"; exit 1; }
 done

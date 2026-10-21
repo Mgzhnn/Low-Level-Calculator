@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 -- Self-checking test: every operation on all 256 signed (A, B) pairs. Compares the
 -- sign and digits sent to the display (x_inter) with reference arithmetic.
--- Division is Euclidean (0 <= r < |b|); division by zero is not compared.
+-- Division is Euclidean (0 <= r < |b|); division by zero must show "--" with no sign.
 -- Needs VHDL-2008 (external name for x_inter).
 entity tb_calc_check is
 end tb_calc_check;
@@ -79,7 +79,9 @@ begin
                         end if;
 
                     elsif bv = 0 then
-                        null;  -- no defined result yet
+                        if x(10 downto 3) /= "11011101" or got_neg then
+                            fail("divide " & integer'image(av) & "/0 does not show --");
+                        end if;
 
                     else
                         r := av mod abs(bv);
@@ -97,7 +99,7 @@ begin
         end loop;
 
         if errors = 0 then
-            report "PASS tb_calc_check: 4 operations x 256 input pairs (divide by zero not compared)";
+            report "PASS tb_calc_check: 4 operations x 256 input pairs";
         else
             report "FAIL tb_calc_check: " & integer'image(errors) & " mismatches";
         end if;

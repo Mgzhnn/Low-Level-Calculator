@@ -19,8 +19,10 @@ The calculator accepts signed 4-bit two's-complement inputs and operation select
 - 4 operations selected by `Sel[1:0]`
 - Signed arithmetic for `A` and `B` (`-8` to `+7`)
 - Sequential multiplier and divider with `Done` handshake
-- Euclidean-style adjustment stage for division sign/remainder handling
+- Euclidean division: the remainder is never negative (for example, -7 / 2 = -4 remainder 1)
+- Division by zero shows `--`
 - Vivado project included (`core_calculator.xpr`)
+- Self-checking GHDL testbenches (`tests/`)
 
 ## Operation Select
 
@@ -30,6 +32,18 @@ The calculator accepts signed 4-bit two's-complement inputs and operation select
 | `01` | Subtraction |
 | `10` | Multiplication |
 | `11` | Division |
+
+## Display
+
+The eight digits show, from left to right:
+
+| Digit | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 |
+|---|---|---|---|---|---|---|---|---|
+| Shows | sign of A | \|A\| | sign of B | \|B\| | result sign | result tens (quotient for division) | result ones (remainder for division) | operation: `A`, `S`, `M` or `d` |
+
+Sign digits are blank for positive values and `-` for negative ones. Addition and subtraction update as soon as `A`, `B` or `Sel` change; multiplication and division show the result latched when `Done` pulses.
+
+`Start` is active-high: a `1` starts a multiplication or division. If your board's Start button reads `0` when pressed, invert it in `Final_Top.vhd`.
 
 ## Top-Level Interface
 
@@ -66,6 +80,7 @@ Outputs:
 - `.../Display_Encoder.vhd`, `.../myseven_segments.vhd` - display formatting and driver
 - `core_calculator.srcs/sim_1/imports/FFFinal_Calculator/Tb_Final_Top.vhd` - simulation testbench
 - `core_calculator.srcs/constrs_1/imports/FFFinal_Calculator/main_display_xdc.xdc` - pin constraints
+- `tests/` - self-checking GHDL testbenches and `run_tests.sh`
 
 ## Build and Run (Vivado)
 
@@ -80,9 +95,22 @@ Target part in project file:
 
 ## Simulation
 
+### Self-checking tests (GHDL)
+
+```bash
+tests/run_tests.sh
+```
+
+- `tb_calc_check`: all four operations on all 256 signed `(A, B)` pairs, comparing the displayed sign and digits with reference arithmetic.
+- `tb_display_check`: all 8 digits are scanned, sign digits are blank or `-`, and subtraction follows `Sel` without pressing `Start`.
+
+The tests use VHDL-2008 external names to read the encoder output. The script exits with status 1 on any failure; set `GHDL` to use a binary that is not on `PATH`.
+
+### Vivado
+
 1. In Vivado, open Simulation Sources.
 2. Use testbench `Tb_Final_Top_Calculator` (`Tb_Final_Top.vhd`).
-3. Run behavioral simulation and inspect `Done`, `a_to_g`, and `an`.
+3. Run behavioral simulation and inspect `Done`, `a_to_g`, and `an`. This testbench drives inputs only and does not check results.
 
 ## Notes
 
