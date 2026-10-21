@@ -56,7 +56,7 @@ architecture Structural of Final_Top_Calculator is
     
     component myseven_segments
         port( x:in std_logic_vector(21 downto 0);
-              clk, clr, reset: in std_logic;
+              clk, reset: in std_logic;
               a_to_g, an: out std_logic_vector(7 downto 0));
     end component;
     
@@ -168,7 +168,6 @@ begin
     port map (
         x => s_x_inter,
         clk => Clk,
-        clr => Start, 
         reset => Reset,
         a_to_g => a_to_g,
         an => an

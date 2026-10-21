@@ -30,4 +30,4 @@ set_property -dict {PACKAGE_PIN AB10 IOSTANDARD LVCMOS33} [get_ports {an[0]}]
 
 set_property -dict {PACKAGE_PIN F21 IOSTANDARD LVCMOS33} [get_ports {Reset}] 
 
-set_property SEVERITY{Warning} [get_drc_checks NSTD-1]
+set_property SEVERITY {Warning} [get_drc_checks NSTD-1]

@@ -18,8 +18,6 @@ end Top_AddSub;
 
 architecture Behavioral of Top_AddSub is
 
-    signal Op_Sel_sig  : STD_LOGIC;
-
 begin
 
 
@@ -29,7 +27,7 @@ begin
             RESET   => RESET,
             Start   => Start,
             Sel     => Sel,
-            Op_Sel  => Op_Sel_sig,
+            Op_Sel  => open,
             Done    => Done,
             OP_Code => OP_Code
         );
@@ -39,7 +37,8 @@ begin
         port map (
             A      => A,
             B      => B,
-            Op_Sel => Op_Sel_sig,
+            -- Follows Sel directly, so the result always matches the operation shown
+            Op_Sel => Sel(0),
             Result => Result
             
         );
