@@ -73,14 +73,18 @@ Outputs:
 
 ## Project Structure
 
-- `core_calculator.xpr` - Vivado project file
-- `core_calculator.srcs/sources_1/imports/FFFinal_Calculator/` - top/core arithmetic and display RTL modules
-- `.../Final_Top.vhd` - top-level wrapper
-- `.../final_calculator.vhd` - arithmetic core integration
-- `.../Display_Encoder.vhd`, `.../myseven_segments.vhd` - display formatting and driver
-- `core_calculator.srcs/sim_1/imports/FFFinal_Calculator/Tb_Final_Top.vhd` - simulation testbench
-- `core_calculator.srcs/constrs_1/imports/FFFinal_Calculator/main_display_xdc.xdc` - pin constraints
+- `rtl/` - synthesizable VHDL
+  - `Final_Top.vhd` - top-level wrapper (`Final_Top_Calculator`)
+  - `final_calculator.vhd` - arithmetic core integration
+  - `addition.vhd`, `signed_addsubtractor.vhd`, `Multiplier_4bit.vhd`, `Divider_4bit.vhd`, `euclidian.vhd`, `absolute_value.vhd` - arithmetic blocks
+  - `state_machine.vhd`, `controller_and_adder_connector.vhd` - control
+  - `Display_Encoder.vhd`, `myseven_segments.vhd` - display formatting and driver
+- `sim/Tb_Final_Top.vhd` - Vivado simulation testbench
+- `constraints/main_display_xdc.xdc` - pin constraints
 - `tests/` - self-checking GHDL testbenches and `run_tests.sh`
+- `core_calculator.xpr` - Vivado project file; it references the directories above
+- `assets/` - architecture diagram
+- `.github/workflows/ci.yml` - runs the GHDL tests on every push and pull request
 
 ## Build and Run (Vivado)
 
@@ -117,3 +121,7 @@ The tests use VHDL-2008 external names to read the encoder output. The script ex
 - `Done` is meaningful for multiplication and division completion.
 - Inputs are treated as signed 4-bit two's-complement values.
 - Division includes quotient/remainder correction logic via `Euclid_Div_Adjust`.
+
+## License
+
+[MIT](LICENSE)
