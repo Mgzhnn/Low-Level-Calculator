@@ -86,7 +86,7 @@
 
   <rect class="card white" x="1000" y="460" width="340" height="210"/>
   <text class="label" x="1025" y="505">Sign Path</text>
-  <text class="legend" x="1025" y="540">Abs_4bit / negative_complement</text>
+  <text class="legend" x="1025" y="540">Abs_4bit (absolute_value.vhd)</text>
   <text class="legend" x="1025" y="570">normalize magnitudes</text>
   <text class="legend" x="1025" y="600">Euclid_Div_Adjust fixes</text>
   <text class="legend" x="1025" y="630">quotient/remainder sign rules</text>
