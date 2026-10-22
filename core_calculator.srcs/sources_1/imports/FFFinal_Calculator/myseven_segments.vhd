@@ -6,7 +6,6 @@ entity myseven_segments is
    Port (
         x:in std_logic_vector(21 downto 0);
         clk: in std_logic;
-        clr: in std_logic;
         reset: in std_logic;
         a_to_g: out std_logic_vector(7 downto 0);
         an: out std_logic_vector(7 downto 0)
@@ -78,7 +77,7 @@ begin
    when "1011"=>a_to_g<="11101101";
    when "1100"=>a_to_g<="10110111";
    when "1101"=>a_to_g<="01000000";
-   when "1110"=>a_to_g<="00111111";
+   when "1110"=>a_to_g<="00000000"; -- positive sign: blank
    when "1111"=>a_to_g<="01011110";
    when others =>a_to_g<="00000000";
   end case;
@@ -98,9 +97,10 @@ begin
  end case;
 end process;
 
-process(clk,clr)
+-- Scan counter: runs freely and is cleared only by reset, so every digit is scanned
+process(clk,reset)
  begin
-  if clr='0' then
+  if reset='1' then
     clkdiv<=(others=>'0');
     elsif clk'event and clk='1' then
     clkdiv<=clkdiv+1;

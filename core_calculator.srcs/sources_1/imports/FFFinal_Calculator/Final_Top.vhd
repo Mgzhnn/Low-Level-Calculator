@@ -46,17 +46,18 @@ architecture Structural of Final_Top_Calculator is
             Div_Quotient  : in  STD_LOGIC_VECTOR(3 downto 0);
             Div_Remainder : in  STD_LOGIC_VECTOR(3 downto 0);
             Div_Sign      : in  STD_LOGIC;
+            Div_By_Zero   : in  STD_LOGIC;
             x_inter       : out STD_LOGIC_VECTOR(21 downto 0)
         );
     end component;
     
-    component negative_complement
-        Port ( A : in STD_LOGIC_VECTOR(3 downto 0); pos_A : out STD_LOGIC_VECTOR(3 downto 0));
+    component Abs_4bit
+        Port ( X : in STD_LOGIC_VECTOR(3 downto 0); MAG_X : out STD_LOGIC_VECTOR(3 downto 0); SIGN_X : out STD_LOGIC);
     end component;
     
     component myseven_segments
         port( x:in std_logic_vector(21 downto 0);
-              clk, clr, reset: in std_logic;
+              clk, reset: in std_logic;
               a_to_g, an: out std_logic_vector(7 downto 0));
     end component;
     
@@ -72,6 +73,7 @@ architecture Structural of Final_Top_Calculator is
     signal Stable_Mul_Res : STD_LOGIC_VECTOR(7 downto 0);
     signal Stable_Div_Q   : STD_LOGIC_VECTOR(3 downto 0);
     signal Stable_Div_R   : STD_LOGIC_VECTOR(3 downto 0);   
+    signal Stable_Div0    : STD_LOGIC;
 
     signal s_mag_A, s_mag_B : STD_LOGIC_VECTOR(3 downto 0);
     signal s_sign_A, s_sign_B : STD_LOGIC;
@@ -85,10 +87,8 @@ architecture Structural of Final_Top_Calculator is
 
 begin
 
-    U_NEG_A: negative_complement port map (A => A, pos_A => s_mag_A);
-    U_NEG_B: negative_complement port map (A => B, pos_A => s_mag_B);
-    s_sign_A <= A(3);
-    s_sign_B <= B(3);
+    U_ABS_A: Abs_4bit port map (X => A, MAG_X => s_mag_A, SIGN_X => s_sign_A);
+    U_ABS_B: Abs_4bit port map (X => B, MAG_X => s_mag_B, SIGN_X => s_sign_B);
 
     U_CORE: Core_Calculator
     port map (
@@ -111,6 +111,9 @@ begin
             Stable_Mul_Res <= (others => '0');
             Stable_Div_Q   <= (others => '0');
             Stable_Div_R   <= (others => '0');
+            Stable_Div0    <= '0';
+            s_Mul_Sign     <= '0';
+            s_Div_Sign     <= '0';
         elsif rising_edge(Clk) then
             if Sel = "10" and c_Done = '1' then
                 Stable_Mul_Res <= c_Mul_Res;
@@ -125,6 +128,11 @@ begin
                 Stable_Div_Q <= c_Div_Q;
                 Stable_Div_R <= c_Div_R;
                 s_Div_Sign   <= c_core_Sign;
+                if B = "0000" then
+                    Stable_Div0 <= '1';
+                else
+                    Stable_Div0 <= '0';
+                end if;
             end if;
         end if;
     end process;
@@ -160,6 +168,7 @@ begin
         Div_Quotient => Stable_Div_Q,    
         Div_Remainder => Stable_Div_R, 
         Div_Sign => s_Div_Sign,
+        Div_By_Zero => Stable_Div0,
         
         x_inter => s_x_inter
     );
@@ -168,7 +177,6 @@ begin
     port map (
         x => s_x_inter,
         clk => Clk,
-        clr => Start, 
         reset => Reset,
         a_to_g => a_to_g,
         an => an

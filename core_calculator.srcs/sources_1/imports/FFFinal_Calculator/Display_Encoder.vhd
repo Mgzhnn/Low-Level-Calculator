@@ -15,6 +15,7 @@ entity Display_Encoder is
         Div_Quotient  : in STD_LOGIC_VECTOR(3 downto 0);
         Div_Remainder : in STD_LOGIC_VECTOR(3 downto 0);
         Div_Sign      : in STD_LOGIC;
+        Div_By_Zero   : in STD_LOGIC;  -- last division had B = 0: show "--"
         x_inter       : out STD_LOGIC_VECTOR(21 downto 0)
     );
 end Display_Encoder;
@@ -29,7 +30,7 @@ architecture Behavioral of Display_Encoder is
 
 begin
 
-    process(Sel, AddSub_Mag, AddSub_Sign, Mul_Result, Mul_Sign, Div_Quotient, Div_Remainder, Div_Sign)
+    process(Sel, AddSub_Mag, AddSub_Sign, Mul_Result, Mul_Sign, Div_Quotient, Div_Remainder, Div_Sign, Div_By_Zero)
     begin
         case Sel is
             when "00" =>
@@ -46,7 +47,7 @@ begin
                 Final_OpCode <= "110";
             when "11" =>
                 Final_Mag    <= (others => '0');
-                Final_Sign   <= Div_Sign;
+                Final_Sign   <= Div_Sign and not Div_By_Zero;
                 Final_OpCode <= "111";
             when others =>
                 Final_Mag    <= (others => '0');
@@ -55,10 +56,13 @@ begin
         end case;
     end process;
 
-    process(Sel, Final_Mag, Div_Quotient, Div_Remainder)
+    process(Sel, Final_Mag, Div_Quotient, Div_Remainder, Div_By_Zero)
         variable Q_Abs : std_logic_vector(3 downto 0);
     begin
-        if Sel = "11" then
+        if Sel = "11" and Div_By_Zero = '1' then
+            Final_Out2 <= "1101";  -- the digit decoder shows "1101" as "-"
+            Final_Out1 <= "1101";
+        elsif Sel = "11" then
             case Div_Quotient is
                 when "1000" => Q_Abs := "1000";
                 when "1001" => Q_Abs := "0111";
