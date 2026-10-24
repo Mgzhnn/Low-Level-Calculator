@@ -6,7 +6,7 @@ set -u
 
 cd "$(dirname "$0")/.."
 GHDL="${GHDL:-ghdl}"
-SRC=core_calculator.srcs/sources_1/imports/FFFinal_Calculator
+SRC=rtl
 WORK="$(mktemp -d)"
 trap 'rm -rf "$WORK"' EXIT
 FLAGS=(--std=08 -fsynopsys --workdir="$WORK")

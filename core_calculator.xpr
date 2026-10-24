@@ -86,98 +86,74 @@
   <FileSets Version="1" Minor="32">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/Display_Encoder.vhd">
+      <File Path="$PPRDIR/rtl/Display_Encoder.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/Display_Encoder.vhd"/>
-          <Attr Name="ImportTime" Val="1764505119"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/Divider_4bit.vhd">
+      <File Path="$PPRDIR/rtl/Divider_4bit.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/Divider_4bit.vhd"/>
-          <Attr Name="ImportTime" Val="1764498003"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/Multiplier_4bit.vhd">
+      <File Path="$PPRDIR/rtl/Multiplier_4bit.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/Multiplier_4bit.vhd"/>
-          <Attr Name="ImportTime" Val="1764497245"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/absolute_value.vhd">
+      <File Path="$PPRDIR/rtl/absolute_value.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/absolute_value.vhd"/>
-          <Attr Name="ImportTime" Val="1763644975"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/addition.vhd">
+      <File Path="$PPRDIR/rtl/addition.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/addition.vhd"/>
-          <Attr Name="ImportTime" Val="1764496768"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/state_machine.vhd">
+      <File Path="$PPRDIR/rtl/state_machine.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/state_machine.vhd"/>
-          <Attr Name="ImportTime" Val="1763639930"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/signed_addsubtractor.vhd">
+      <File Path="$PPRDIR/rtl/signed_addsubtractor.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/signed_addsubtractor.vhd"/>
-          <Attr Name="ImportTime" Val="1764496281"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/controller_and_adder_connector.vhd">
+      <File Path="$PPRDIR/rtl/controller_and_adder_connector.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/controller_and_adder_connector.vhd"/>
-          <Attr Name="ImportTime" Val="1763741882"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/euclidian.vhd">
+      <File Path="$PPRDIR/rtl/euclidian.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/euclidian.vhd"/>
-          <Attr Name="ImportTime" Val="1764505119"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/final_calculator.vhd">
+      <File Path="$PPRDIR/rtl/final_calculator.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/final_calculator.vhd"/>
-          <Attr Name="ImportTime" Val="1764491829"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/myseven_segments.vhd">
+      <File Path="$PPRDIR/rtl/myseven_segments.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/myseven_segments.vhd"/>
-          <Attr Name="ImportTime" Val="1763642214"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/FFFinal_Calculator/Final_Top.vhd">
+      <File Path="$PPRDIR/rtl/Final_Top.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/Final_Top.vhd"/>
-          <Attr Name="ImportTime" Val="1764491934"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -190,10 +166,8 @@
     </FileSet>
     <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
       <Filter Type="Constrs"/>
-      <File Path="$PSRCDIR/constrs_1/imports/FFFinal_Calculator/main_display_xdc.xdc">
+      <File Path="$PPRDIR/constraints/main_display_xdc.xdc">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/main_display_xdc.xdc"/>
-          <Attr Name="ImportTime" Val="1763742120"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
         </FileInfo>
@@ -204,10 +178,8 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sim_1/imports/FFFinal_Calculator/Tb_Final_Top.vhd">
+      <File Path="$PPRDIR/sim/Tb_Final_Top.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../../../Desktop/FFFinal_Calculator/Tb_Final_Top.vhd"/>
-          <Attr Name="ImportTime" Val="1764400471"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -233,15 +205,6 @@
     </FileSet>
     <FileSet Name="utils_1" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
       <Filter Type="Utils"/>
-      <File Path="$PSRCDIR/utils_1/imports/synth_1/Final_Top_Calculator.dcp">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedInSteps" Val="synth_1"/>
-          <Attr Name="UsedInSteps" Val="synth_1_copy_1"/>
-          <Attr Name="AutoDcp" Val="1"/>
-        </FileInfo>
-      </File>
       <Config>
         <Option Name="TopAutoSet" Val="TRUE"/>
       </Config>
